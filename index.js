@@ -13,15 +13,13 @@ connectToMongo();
 app.use(express.json())
 app.use(cors())
 // Routes
-app.get("/", (req, res) => {
-  router.get("/", async (req, res) => {
+app.get("/", async(req, res) => {
     try {
       const blogs = await Blog.find();
       res.send(blogs);
     } catch (error) {
       res.send(error);
     }
-  });
 });
 
 
