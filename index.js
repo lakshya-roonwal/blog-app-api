@@ -4,6 +4,7 @@ const cors = require('cors');
 const dotenv=require('dotenv')
 dotenv.config();
 const port = process.env.PORT;
+const Blog = require("../modals/Blog");
 const connectToMongo=require('./db')
 
 connectToMongo();
@@ -13,10 +14,16 @@ app.use(express.json())
 app.use(cors())
 // Routes
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  router.get("/", async (req, res) => {
+    try {
+      const blogs = await Blog.find();
+      res.send(blogs);
+    } catch (error) {
+      res.send(error);
+    }
+  });
 });
-// blog Route
-app.use('/api/blog',require('./routes/blog'))
+
 
 
 app.listen(port, (req, res) => {
