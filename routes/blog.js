@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
     const blogs = await Blog.find();
     res.send(blogs);
   } catch (error) {
-    req.send(error);
+    res.send(error);
   }
 });
 
@@ -35,7 +35,7 @@ router.post("/createblog", (req, res) => {
     blog.save();
     res.json({msg:'created succesfully'})
   } catch (error) {
-    req.send(error);
+    res.send(error);
     res.json({msg:'creation Error'})
   }
 });
