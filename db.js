@@ -1,5 +1,8 @@
 const mongoose=require('mongoose')
-connectionString="mongodb+srv://erenpool7214:2OPqdFCZ2vzdJvtm@blogdb.re9qluw.mongodb.net/lakshya-blog";
+const dotenv=require('dotenv')
+dotenv.config();
+connectionString=process.env.DB_CONNECTION_STRING;
+
 const connectToMongo=async()=>{
     try{
         await mongoose.connect(connectionString,{useNewUrlParser:true,useUnifiedTopology:true},)

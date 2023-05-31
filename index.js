@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 const cors = require('cors');
-const port = 8181;
+const dotenv=require('dotenv')
+dotenv.config();
+const port = process.env.PORT;
 const connectToMongo=require('./db')
 
 connectToMongo();
@@ -18,5 +20,5 @@ app.use('/api/blog',require('./routes/blog'))
 
 
 app.listen(port, (req, res) => {
-  console.log(`Server successfully started on http://localhost:${port}`);
+  console.log(`Server successfully started on ${process.env.BASE_URL}${port}`);
 });
