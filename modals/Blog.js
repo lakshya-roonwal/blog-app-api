@@ -10,7 +10,7 @@ const BlogSchema = new mongoose.Schema({
     },
     blogType:{
         type:String,
-        required:true
+        required:true   
     },
     content: {
         type: Array,
